@@ -4,7 +4,7 @@ defmodule ElixirAleDummy.MixProject do
   def project do
     [
       app: :elixir_ale_dummy,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -21,7 +21,10 @@ defmodule ElixirAleDummy.MixProject do
 
   defp deps do
     [
-      {:ex_doc, ">= 0.0.0", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:cowboy, "~> 1.1.2"},
+      {:plug, "~> 1.3.4"},
+      {:poison, "~> 3.1"}
     ]
   end
 

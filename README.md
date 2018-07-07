@@ -13,3 +13,13 @@ def deps("host") do
   ]
 end
 ```
+
+Start the simulator by adding the following to your startup code:
+
+```elixir
+if Mix.Project.config()[:target] == "host" do
+  ElixirALEDummy.start(8080)
+end
+```
+
+Visit [http://localhost:8080](http://localhost:8080) to view the state of the GPIOs.
