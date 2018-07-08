@@ -1,6 +1,6 @@
 defmodule ElixirALEDummy.Web do
-  def start_link(port \\ 8080) do
-    Plug.Adapters.Cowboy.http(__MODULE__, [], port: port, dispatch: dispatch())
+  def child_spec([port: port] \\ [port: 8080]) do
+    Plug.Adapters.Cowboy.child_spec(:http, __MODULE__, [], port: port, dispatch: dispatch())
   end
 
   defp dispatch do

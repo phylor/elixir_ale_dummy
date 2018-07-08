@@ -20,6 +20,8 @@ defmodule ElixirALE.GPIO do
   end
 
   def start_link(pin, pin_direction, options \\ []) do
+    options = Keyword.put_new(options, :name, String.to_atom("ElixirALE.GPIO.#{pin}"))
+
     {:ok, pid} = GenServer.start_link(__MODULE__, {pin, pin_direction}, options)
 
     ElixirALEDummy.Board.add_gpio(pin, pid)

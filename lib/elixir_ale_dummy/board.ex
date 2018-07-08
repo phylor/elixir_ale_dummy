@@ -5,7 +5,7 @@ defmodule ElixirALEDummy.Board do
     defstruct gpios: [], subscribers: []
   end
 
-  def start_link do
+  def start_link(_options) do
     GenServer.start_link(__MODULE__, %State{}, name: __MODULE__)
   end
 
