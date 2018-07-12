@@ -9,7 +9,7 @@ Add `elixir_ale_dummy` to the list of dependencies in `mix.exs`. When using [Ner
 ```elixir
 def deps("host") do
   [
-    {:elixir_ale_dummy, "~> 0.1.0"}
+    {:elixir_ale_dummy, "~> 0.1.2"}
   ]
 end
 ```
