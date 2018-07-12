@@ -1,28 +1,8 @@
 <h1>GPIOs</h1>
-<div id="gpio"></div>
-    <script>
-      var socket = new WebSocket("ws://localhost:8080/ws");
 
-      function sendInterrupt(pin, direction) {
-        socket.send(JSON.stringify({pin: pin, interrupt_direction: direction}));
-      }
-
-      socket.onmessage = function (event) {
-        var gpios = JSON.parse(event.data).gpios;
-
-        var gpioHtml = "";
-        for(var i = 0; i < gpios.length; ++i) {
-          var gpio = gpios[i];
-          gpioHtml += ("<b>" + gpio["pin"] + "</b> " + gpio["pin_state"] + " (" + gpio["direction"] + ")")
-
-          if(gpio["interrupt_direction"]) {
-            gpioHtml += "<button onClick=\"sendInterrupt(" + gpio["pin"] + ", 'rising')\">rising</button>"
-            gpioHtml += "<button onClick=\"sendInterrupt(" + gpio["pin"] + ", 'falling')\">falling</button>"
-          }
-
-          gpioHtml += "<br />"
-        }
-
-        document.getElementById("gpio").innerHTML = gpioHtml;
-      }
-    </script>
+<div id="main"></div>
+<script src="/main.js"></script>
+<script>
+  var node = document.getElementById('main');
+  var app = Elm.Main.embed(node);
+</script>
